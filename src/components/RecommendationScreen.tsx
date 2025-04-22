@@ -20,12 +20,14 @@ const RecommendationScreen: React.FC<RecommendationScreenProps> = ({
   const { toast } = useToast();
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(recommendation.whatsappLink);
-    toast({
-      title: "Link copied to clipboard",
-      description: "You can now paste it in your browser",
-      duration: 3000,
-    });
+    if (recommendation.actionPlan.whatsappLink) {
+      navigator.clipboard.writeText(recommendation.actionPlan.whatsappLink);
+      toast({
+        title: "Link copied to clipboard",
+        description: "You can now paste it in your browser",
+        duration: 3000,
+      });
+    }
   };
 
   return (
@@ -49,7 +51,7 @@ const RecommendationScreen: React.FC<RecommendationScreenProps> = ({
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-summer-yellow/20 flex items-center justify-center text-sm font-medium">
                     {index + 1}
                   </span>
-                  <span className="text-gray-700">{step}</span>
+                  <span className="text-gray-700">{step.text}</span>
                 </li>
               ))}
             </ul>
