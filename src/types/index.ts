@@ -30,6 +30,7 @@ export interface ActionStep {
 export interface ActionPlan {
   steps: ActionStep[];
   whatsappLink?: string;
+  communityMessage?: string;
 }
 
 export interface RecommendationGroup {

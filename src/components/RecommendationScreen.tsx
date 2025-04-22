@@ -1,11 +1,10 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { RecommendationGroup } from "@/types";
-import { Check } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { ArrowRight } from "lucide-react";
 
 interface RecommendationScreenProps {
   recommendation: RecommendationGroup;
@@ -16,17 +15,9 @@ const RecommendationScreen: React.FC<RecommendationScreenProps> = ({
   recommendation,
   onRestart,
 }) => {
-  const [showLink, setShowLink] = useState(false);
-  const { toast } = useToast();
-
-  const handleCopyLink = () => {
+  const handleJoinGroup = () => {
     if (recommendation.actionPlan.whatsappLink) {
-      navigator.clipboard.writeText(recommendation.actionPlan.whatsappLink);
-      toast({
-        title: "Link copied to clipboard",
-        description: "You can now paste it in your browser",
-        duration: 3000,
-      });
+      window.open(recommendation.actionPlan.whatsappLink, "_blank");
     }
   };
 
@@ -57,47 +48,26 @@ const RecommendationScreen: React.FC<RecommendationScreenProps> = ({
             </ul>
           </div>
 
-          {recommendation.actionPlan.whatsappLink ? (
-            !showLink ? (
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          {recommendation.actionPlan.whatsappLink && recommendation.actionPlan.communityMessage && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              className="space-y-6"
+            >
+              <p className="text-gray-700 text-center px-4">{recommendation.actionPlan.communityMessage}</p>
+              <motion.div 
+                whileHover={{ scale: 1.02 }} 
+                whileTap={{ scale: 0.98 }}
+              >
                 <Button
-                  onClick={() => setShowLink(true)}
-                  className="w-full bg-summer-yellow text-black hover:bg-summer-yellow/90 font-semibold py-5"
+                  onClick={handleJoinGroup}
+                  className="w-full bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold py-6 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
-                  Show Group Link
+                  Join Now
+                  <ArrowRight className="ml-2" />
                 </Button>
               </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                className="space-y-4"
-              >
-                <div className="p-4 bg-gray-50 rounded-md border border-gray-200 break-all">
-                  <p className="text-gray-800 font-mono">{recommendation.actionPlan.whatsappLink}</p>
-                </div>
-                <div className="flex gap-3">
-                  <Button
-                    onClick={handleCopyLink}
-                    className="flex-1 bg-summer-blue hover:bg-summer-blue/90"
-                  >
-                    <Check className="mr-2 h-4 w-4" />
-                    Copy Link
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    onClick={() => window.open(recommendation.actionPlan.whatsappLink, "_blank")}
-                    className="flex-1"
-                  >
-                    Open Group
-                  </Button>
-                </div>
-              </motion.div>
-            )
-          ) : (
-            <div className="text-center p-4 bg-gray-50 rounded-md border border-gray-200">
-              <p className="text-gray-600">WhatsApp group coming soon!</p>
-            </div>
+            </motion.div>
           )}
           
           <div className="mt-8 flex justify-center">

@@ -1,4 +1,3 @@
-
 import { Question, RecommendationGroup } from "@/types";
 
 export const questions: Question[] = [
@@ -42,7 +41,8 @@ export const recommendationGroups: RecommendationGroup[] = [
         { text: "Join a student startup community for support" },
         { text: "Enter an ideathon or college startup challenge" }
       ],
-      whatsappLink: "https://chat.whatsapp.com/Dgau6ceYkjU4ItggKPFCS5"
+      whatsappLink: "https://chat.whatsapp.com/Dgau6ceYkjU4ItggKPFCS5",
+      communityMessage: "Looking to connect with like-minded innovators? Join this Community and start collaborating on exciting startup ideas. Your future teammates are waiting!"
     }
   },
   {
@@ -58,7 +58,8 @@ export const recommendationGroups: RecommendationGroup[] = [
         { text: "Upskill with project-based online courses" },
         { text: "Do 1–2 mock interviews before the real ones" }
       ],
-      whatsappLink: "https://chat.whatsapp.com/CLr4KtPydx24aBKfVSJb6U"
+      whatsappLink: "https://chat.whatsapp.com/CLr4KtPydx24aBKfVSJb6U",
+      communityMessage: "Ready to take your career to the next level? Join this Internship Group for expert guidance, resources, and opportunities that will help you land your dream internship!"
     }
   },
   {
