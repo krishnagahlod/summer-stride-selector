@@ -1,3 +1,4 @@
+
 export interface Option {
   id: string;
   text: string;
@@ -7,6 +8,7 @@ export interface Question {
   id: string;
   text: string;
   options: Option[];
+  isOptional?: boolean;
 }
 
 export interface UserResponse {
@@ -20,8 +22,13 @@ export interface UserData {
   timestamp: number;
 }
 
+export interface ActionStep {
+  text: string;
+  isCompleted?: boolean;
+}
+
 export interface ActionPlan {
-  steps: string[];
+  steps: ActionStep[];
   whatsappLink?: string;
 }
 
@@ -29,6 +36,6 @@ export interface RecommendationGroup {
   id: string;
   title: string;
   description: string;
-  whatsappLink: string;
+  whatsappLink?: string;
   actionPlan: ActionPlan;
 }
