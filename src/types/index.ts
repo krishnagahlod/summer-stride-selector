@@ -36,6 +36,5 @@ export interface RecommendationGroup {
   id: string;
   title: string;
   description: string;
-  whatsappLink?: string;
   actionPlan: ActionPlan;
 }

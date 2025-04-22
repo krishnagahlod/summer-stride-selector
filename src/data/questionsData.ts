@@ -33,7 +33,6 @@ export const recommendationGroups: RecommendationGroup[] = [
     id: "startup",
     title: "Startup Explorer Path",
     description: "Great choice! Let's help you explore and validate startup ideas this summer.",
-    whatsappLink: "https://chat.whatsapp.com/Dgau6ceYkjU4ItggKPFCS5",
     actionPlan: {
       steps: [
         { text: "List 3–5 real-life problems you've noticed around you" },
@@ -50,7 +49,6 @@ export const recommendationGroups: RecommendationGroup[] = [
     id: "internship",
     title: "Internship Seeker Path",
     description: "Let's prepare you for landing that perfect internship!",
-    whatsappLink: "https://chat.whatsapp.com/CLr4KtPydx24aBKfVSJb6U",
     actionPlan: {
       steps: [
         { text: "Choose 1–2 domains to explore (tech, finance, marketing, etc.)" },
